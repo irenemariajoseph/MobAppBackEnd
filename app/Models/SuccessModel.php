@@ -8,6 +8,6 @@ class SuccessModel {
     public $data;
 
     public static function GetSuccessModel() {
-        return new BaseSuccessResponse();
+        return new SuccessModel();
     }
 }
