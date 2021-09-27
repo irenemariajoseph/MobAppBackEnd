@@ -2,8 +2,12 @@
 
     class SuccessResponse {
         public $code;
-        public $error;
         public $data;
+    }
+
+    class ErrorResponse {
+        public $code;
+        public $message;
     }
 
 ?>
