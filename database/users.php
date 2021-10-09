@@ -1,7 +1,7 @@
 <?php
 
     require "../util/connection.php";
-
+     // check email udh terdaftar a
     function CheckExistingUserByEmail($email) {
         $op = "database/CheckExistingUserByEmail";
         
@@ -25,7 +25,7 @@
         }
 
     }
-
+     // masukin data user pas create acc 
     function InsertUserToDatabase($data) {
         $op = "database/CheckExistingUserByEmail";
 
@@ -44,4 +44,30 @@
             throw new Exception("[$op] $e");
         }
     }
+    // ambil data email pass buat login 
+        function CheckUserInputLogin($email) {
+            $op = "database/CheckExistingUserByEmail";
+            
+            try {
+                $con = GetConnection();
+    
+                $query = "SELECT * FROM users WHERE email like ?";
+    
+                $result = $con->prepare($query);
+                $result->execute([$email]);
+    
+                $row = $result->fetch();
+                
+                $loginuser = new UsersLogin();
+                $loginuser -> email = $row['email'];
+                $loginuser -> password = $row['password'];
+                return $loginuser;
+            
+            } catch (Exception $e) {
+                throw new Exception("[$op] $e");
+            }
+    
+        }
+    
+   
 ?>

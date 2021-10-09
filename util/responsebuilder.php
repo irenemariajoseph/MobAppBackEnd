@@ -12,7 +12,8 @@
     }
 
     function BuildErrorResponse($code, $error) {
-        header('Content-Type: application/json; charset=utf-8');
+        header('Content-Type: application/json; charset=utf-8'); 
+        //header -> responnya biar buat json 
         $res = new ErrorResponse();
         $res->code = $code;
         $res->message = $error;

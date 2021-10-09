@@ -1,37 +1,22 @@
 <?php
-
     require "../util/responsebuilder.php";
-    require "../entity/registration.php";
+    require "../entity/login.php";
     require "../util/validate.php";
-    require "../service/registration.php";
+    require "../service/login.php";
     require "../util/globalvariable.php";
 
-    $op = "router/registration";
-    //WAJIB ADA DISETIAP SERVICE YG ADA 
-    if ($_SERVER["REQUEST_METHOD"] != "POST") {
+    $op = "router/login";
+
+     //WAJIB ADA DISETIAP SERVICE YG ADA 
+     if ($_SERVER["REQUEST_METHOD"] != "POST") {
         $msg = "[$op] wrong request method"; // [$op] -> biar indikasi errornya gampang 
         BuildErrorResponse($StatusBadRequest, $msg);
         return;
     }
 
-    // initiate struct
-    $req = new Users();
-    
-    // get name variable and check if name is empty or not -> until it registered succesfully 
-    if (isset($_POST['name'])) {
-        $name = $_POST['name'];
-        if (ValidateName($name)){
-            $req->name = $name;// buat masukin ke struct 
-        }else {
-            $msg = "[$op] invalid name format";
-            BuildErrorResponse($StatusBadRequest, $msg);
-            return;
-        }
-    } else {
-        $msg = "[$op] name can not be empty";
-        BuildErrorResponse($StatusBadRequest, $msg);
-        return;
-    }
+     // initiate struct
+     $req = new UsersLogin();
+
 
     // get password
     if (isset($_POST['password'])) {
@@ -56,12 +41,14 @@
         $msg = "[$op] email can not be empty";
         BuildErrorResponse($StatusBadRequest, $msg);
         return;
+
     }
 
-    $res = RegisterUser($req);
+    // ngambil function di service trs end point 
+    $res = LoginUser($req);
     if ($res instanceof Exception) {
-        if (strcmp($res->getMessage(), $RegisterUserExist) == 0) {
-            BuildErrorResponse($StatusDataAlreadyExist, $res->getMessage());
+        if (strcmp($res->getMessage(), $LoginInvalid) == 0) {
+            BuildErrorResponse($StatusInvalidLogin, $res->getMessage());
             return;
         }
 
@@ -69,6 +56,6 @@
         return;
     }
 
-    $msg = "[$op] user registered succesfully";
+    $msg = "[$op] User Sign In Succesfully";
     BuildSuccessResponse($msg);
 ?>
