@@ -1,23 +1,24 @@
 <?php
     require "../database/users.php";
 
-    function LoginUser($data) {
+    /**
+     * @return object
+     */
+    function LoginUser($param) {
         $op = "service/LoginUser";
         // buat ngecek bener ato ga emailnya 
-        $err = CheckUserInputLogin($data -> email);
-        if ($err instanceof Exception) { // ini error ato ga, klo bukan error brrti boolean 
-            return $err;
+        $data = CheckUserInputLogin($param->email);
+        if ($data instanceof Exception) { // ini error ato ga, klo bukan error brrti boolean 
+            return $data;
         }
-        if (empty($err)) {
-            return new Exception("[$op] Invalid username / password!");
-          }
         
-        $pw = $err->password;
-        if (!password_verify($data-> password ,$pw )){
+        if (empty($data)) {
             return new Exception("[$op] Invalid username / password!");
         }
-            
         
+        if (!password_verify($param->password, $data->password)){
+            return new Exception("[$op] Invalid username / password!");
+        }
     }
 
 
