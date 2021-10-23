@@ -3,7 +3,7 @@
     $StatusBadRequest = 400;
     $StatusInternalServerError = 500;
     $StatusDataAlreadyExist = 501;
-    $StatusInvalidLogin = 401;
+    $StatusInvalidActivity = 401;
 
     // error message user 
     $RegisterUserExist = "[service/RegisterUser] email already exist";
@@ -12,6 +12,11 @@
     // error message user login 
     $LoginInvalid = "[service/LoginUser] Invalid username / password!";
 
+    // error message alamat 
+    $InvalidAddress = "[service/InputAlamat] Invalid Address Registration!";
+
+    // error message paket detail  
+    $InvalidPackageDetail = "[service/InputAlamat] Invalid Package Detail Registration!";
     function GetCurrentDateTime() {
         return date('d-m-Y H:i:s');
     }

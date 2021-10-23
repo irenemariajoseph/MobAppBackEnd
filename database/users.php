@@ -1,7 +1,7 @@
 <?php
 
     require "../util/connection.php";
-     // check email udh terdaftar a
+     // check email udh terdaftar 
      /**
      * @return object
      */
@@ -39,13 +39,14 @@
         try {
             $con = GetConnection();
 
-            $query = "INSERT INTO users(name, password, email, join_date) VALUES(?,?,?,now())";
+            $query = "INSERT INTO users(name, password, email, role, join_date) VALUES(?,?,?, 'user'  , now())";
 
             $result = $con->prepare($query);
             $result->execute([
                 $param->name,
                 $param->password,
-                $param->email
+                $param->email,
+               
             ]);
         } catch (\Exception $e) {
             throw new Exception("[$op] $e");
@@ -73,6 +74,36 @@
             $loginuser -> email = $row['email'];
             $loginuser -> password = $row['password'];
             return $loginuser;
+        
+        } catch (Exception $e) {
+            throw new Exception("[$op] $e");
+        }
+
+    }
+
+    /**
+     * @return object
+     */
+    function ChangePassword($password) {
+        $op = "database/ChangePassword";
+        
+        try {
+            $con = GetConnection();
+
+            $query = "SELECT * FROM users WHERE password like ?";
+
+            $result = $con->prepare($query);
+            $result->execute([$password]);
+
+            $row = $result->fetch();
+            
+            $changepassword= new ChangePassword();
+            $changepassword -> password = $row['password'];
+
+            //$query = "UPDATE users SET  password ='$password'";
+           
+
+            return $changepassword;
         
         } catch (Exception $e) {
             throw new Exception("[$op] $e");

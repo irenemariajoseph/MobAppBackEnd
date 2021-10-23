@@ -48,7 +48,7 @@
     $res = LoginUser($req);
     if ($res instanceof Exception) {
         if (strcmp($res->getMessage(), $LoginInvalid) == 0) {
-            BuildErrorResponse($StatusInvalidLogin, $res->getMessage());
+            BuildErrorResponse($StatusInvalidActivity, $res->getMessage());
             return;
         }
 

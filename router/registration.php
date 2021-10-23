@@ -58,6 +58,10 @@
         return;
     }
 
+  
+
+    
+    // manggil service 
     $res = RegisterUser($req);
     if ($res instanceof Exception) {
         if (strcmp($res->getMessage(), $RegisterUserExist) == 0) {
