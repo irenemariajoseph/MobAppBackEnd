@@ -42,8 +42,9 @@
     
         return $dist * 1.609344;
     }
-    echo(hitungjarak($lat1, $lat2, $long1, $long2));
     
+    echo(hitungjarak($lat1, $lat2, $long1, $long2));
+
     $msg = "[$op]Hitung Jarak Sukses";
     BuildSuccessResponse($msg);
    

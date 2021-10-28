@@ -14,4 +14,12 @@
         return True;
     }
 
+    function ValidateNama($nama) {
+        if (!preg_match("/^[a-zA-Z-' ]*$/",$nama)) {
+            return False;
+        }
+        return True;
+    }
+
+
 ?>

@@ -15,7 +15,7 @@
     }
 
     // initiate struct
-    $req = new InputAlamat();
+    $req = new InputAlamatPeng();
     
     // get name variable and check if name is empty or not -> until it registered succesfully 
     if (isset($_POST['nama'])) {
@@ -88,7 +88,7 @@
         return;
     }
     
-    $res = InputAlamat($req);
+    $res = InputAlamatPeng($req);
     if ($res instanceof Exception) {
         if (strcmp($res->getMessage(), $InvalidAddress ) == 0) {
             BuildErrorResponse($StatusInvalidActivity, $res->getMessage());
@@ -99,8 +99,6 @@
         return;
     }
 
-  
-   
 
     //ngambil function di service trs end point 
     

@@ -5,13 +5,13 @@
      /**
      * @return object
      */
-    function InputAlamattoDatabase($param) {
+    function InputAlamatPengtoDatabase($param) {
         $op = "database/InputAlamattoDatabase";
 
         try {
             $con = GetConnection();
 
-            $query = "INSERT INTO daftar_alamat(nama, telpon, alamat_lengkap, provinsi, kota, kodepos, latitude, longtitude, notes_tambahan) VALUES(?,?,?,?,?,?,?,?,?)";
+            $query = "INSERT INTO daftar_alamat_pengirim(nama, telpon, alamat_lengkap, provinsi, kota, kodepos, latitude, longtitude, notes_tambahan) VALUES(?,?,?,?,?,?,?,?,?)";
 
             $result = $con->prepare($query);
             $result->execute([

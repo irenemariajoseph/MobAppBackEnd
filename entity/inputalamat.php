@@ -1,7 +1,7 @@
 <?php
 
-    class InputAlamat {
-
+    class InputAlamatPeng {
+    
         public $nama;
         public $telpon;
         public $alamat_lengkap;

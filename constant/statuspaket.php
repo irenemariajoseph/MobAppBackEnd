@@ -1,9 +1,10 @@
 <?php
  
    function status(){
-   $a = [1, 2, 3, 4, 5, 6, 7, 8 ];
-   $b = ['Delivered to Post', 'PickUp', 'deliveredtopost', 'warehousetransit', 'acceptedbykurir' ,
-     'ongoing' ,'arrived','failed' ];
+      
+   $a = [1, 2, 3, 4, 5, 6, 7 ];
+   $b = ['PickUp', 'Delivered to Post', 'Warehouse Transit', 'Accepted By Kurir' ,
+     'on going' ,'arrived','failed' ];
     
   
     $type = array_map('mapstatus', $a, $b);
@@ -19,4 +20,4 @@
 
    }
 
-?>
+?>g
