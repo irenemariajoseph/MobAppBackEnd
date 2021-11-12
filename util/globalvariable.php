@@ -16,7 +16,7 @@
     $InvalidAddress = "[service/InputAlamat] Invalid Address Registration!";
 
     // error message paket detail  
-    $InvalidPackageDetail = "[service/InputAlamat] Invalid Package Detail Registration!";
+    $InvalidPackageDetail = "[service/InvalidPackageDetail] Invalid Package Detail Registration!";
     function GetCurrentDateTime() {
         return date('d-m-Y H:i:s');
     }

@@ -3,7 +3,7 @@
     require "../util/responsebuilder.php";
     require "../entity/inputtransaction.php";
     require "../util/validate.php";
-    require "../service/inputtransaction.php";
+    require "../service/inputpackagedetail.php";
     require "../util/globalvariable.php";
 
     $op = "router/inputtransaction";
@@ -15,84 +15,48 @@
     }
 
     // initiate struct
-    $req = new InputPackageDetail();
+    $req = new InputTransactionInfotoDB();
 
-    // get name variable and check if name is empty or not -> until it registered succesfully 
-    
-    if (isset($_POST['nama_barang'])) {
-        $req->nama_barang = $_POST['nama_barang'];
+
+    if (isset($_POST['jarak'])) {
+        $req->jarak = $_POST['jarak'];
     } else {
-        $msg = "[$op] nama_barang   can not be empty";
+        $msg = "[$op] jarak can not be empty";
         BuildErrorResponse($StatusBadRequest, $msg);
         return;
     }
 
-
-
-    // get password
-    if (isset($_POST['kuantitas'])) {
-        $req->kuantitas = $_POST['kuantitas'];
+    if (isset($_POST['harga'])) {
+        $req->harga = $_POST['harga'];
     } else {
-        $msg = "[$op] kuantitas  can not be empty";
+        $msg = "[$op] harga  can not be empty";
         BuildErrorResponse($StatusBadRequest, $msg);
         return;
     }
 
-    if (isset($_POST['unit_paket'])) {
-        $req->unit_paket = $_POST['unit_paket'];
+    if (isset($_POST['id_transaksi'])) {
+        $req->id_transaksi = $_POST['id_transaksi'];
     } else {
-        $msg = "[$op] unit_paket  can not be empty";
+        $msg = "[$op] id_transaksi  can not be empty";
         BuildErrorResponse($StatusBadRequest, $msg);
         return;
     }
-
-    if (isset($_POST['berat'])) {
-        $req->berat = $_POST['berat'];
-    } else {
-        $msg = "[$op] berat  can not be empty";
-        BuildErrorResponse($StatusBadRequest, $msg);
-        return;
-    }
-
-    if (isset($_POST['fragile'])) {
-        $req->fragile = $_POST['fragile'];
-    } else {
-        $msg = "[$op] fragile  can not be empty";
-        BuildErrorResponse($StatusBadRequest, $msg);
-        return;
-    }
-
-    if (isset($_POST['asuransibarang'])) {
-        $req->asuransibarang = $_POST['asuransibarang'];
-    } else {
-        $msg = "[$op] asuransi  can not be empty";
-        BuildErrorResponse($StatusBadRequest, $msg);
-        return;
-    }
-    if (isset($_POST['tipe_pengambilan'])) {
-        $req->tipe_pengambilan = $_POST['tipe_pengambilan'];
-    } else {
-        $msg = "[$op] tipe_pengambilan  can not be empty";
-        BuildErrorResponse($StatusBadRequest, $msg);
-        return;
-    }
-
-    
-   
 
     //ngambil function di service trs end point 
-    $res = InputPackageDetail($req);
+    $res = InputTransaction($req);
+
     if ($res instanceof Exception) {
         if (strcmp($res->getMessage(), $InvalidPackageDetail ) == 0) {
             BuildErrorResponse($StatusInvalidActivity, $res->getMessage());
             return;
+           
         }
 
         BuildErrorResponse($StatusInternalServerError, $res->getMessage());
         return;
     }
     
-    $msg = "[$op] Package detail input succesfully";
-    BuildSuccessResponse($msg);
     
+    $msg = "[$op] Transaction input successful";
+    BuildSuccessResponse($msg);
 ?>

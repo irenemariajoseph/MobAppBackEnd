@@ -6,7 +6,7 @@
     require "../service/inputalamat.php";
     require "../util/globalvariable.php";
 
-    $op = "router/inputalamatpengirim";
+    $op = "router/inputalamatpenerima";
     //WAJIB ADA DISETIAP SERVICE YG ADA 
     if ($_SERVER["REQUEST_METHOD"] != "POST") {
         $msg = "[$op] wrong request method"; // [$op] -> biar indikasi errornya gampang 
@@ -15,7 +15,7 @@
     }
 
     // initiate struct
-    $req = new InputAlamatPeng();
+    $req = new InputAlamatPen();
     
     // get name variable and check if name is empty or not -> until it registered succesfully 
     if (isset($_POST['nama'])) {
@@ -73,6 +73,7 @@
         BuildErrorResponse($StatusBadRequest, $msg);
         return;
     }
+
     if (isset($_POST['latitude'])) {
         $req->latitude = $_POST['latitude'];
     } else {
@@ -80,6 +81,7 @@
         BuildErrorResponse($StatusBadRequest, $msg);
         return;
     }
+
     if (isset($_POST['longtitude'])) {
         $req->longtitude = $_POST['longtitude'];
     } else {
@@ -88,7 +90,8 @@
         return;
     }
     
-    $res = InputAlamatPeng($req);
+    $res = InputAlamatPen($req);
+    
     if ($res instanceof Exception) {
         if (strcmp($res->getMessage(), $InvalidAddress ) == 0) {
             BuildErrorResponse($StatusInvalidActivity, $res->getMessage());
@@ -102,6 +105,6 @@
 
     //ngambil function di service trs end point 
     
-    $msg = "[$op] Address Pengirim registered succesfully";
+    $msg = "[$op] Address Penerima registered succesfully";
     BuildSuccessResponse($msg);
 ?>

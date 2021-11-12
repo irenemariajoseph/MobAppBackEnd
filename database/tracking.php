@@ -6,7 +6,7 @@
      * @return object
      */
     function UpdateStatusinDB($status_paket, $id_transaksi, $kolom_tanggal) {
-        $op = "database/InputAlamattoDatabase";
+        $op = "database/UpdateStatusinDB";
 
         try {
             $con = GetConnection();
@@ -26,3 +26,5 @@
         }
     }
 ?>
+
+

@@ -2,6 +2,8 @@
 
     class InputPackageDetail {
         public $id_pengirim;
+        public $id_penerima;
+        public $id_user;
         public $nama_barang;
         public $kuantitas;
         public $unit_paket;
@@ -9,6 +11,8 @@
         public $fragile;
         public $asuransibarang;
         public $tipe_pengambilan;
+        public $harga;
+        public $jarak; 
     
 
     }

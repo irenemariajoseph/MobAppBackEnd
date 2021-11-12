@@ -11,11 +11,13 @@
         try {
             $con = GetConnection();
 
-            $query = "INSERT INTO transaksi_paket(id_pengirim, nama_barang, kuantitas, unit_paket, berat, fragile, asuransibarang, tipe_pengambilan  ) VALUES(?, ?,?,?,?,?,?,?)";
+            $query = "INSERT INTO transaksi_paket(id_pengirim,  id_penerima, id_user,  nama_barang, kuantitas, unit_paket, berat, fragile, asuransibarang, tipe_pengambilan , status_paket , jarak, harga   ) VALUES(?,?,?,?,?,?,?,?,?,?,'Belum Di Proses',  '2.0', '2.0' )";
 
             $result = $con->prepare($query);
             $result->execute([
-                $param -> id_alamatpengirim,
+                $param -> id_pengirim,
+                $param -> id_penerima,
+                $param -> id_user,
                 $param->nama_barang,
                 $param->kuantitas,
                 $param->unit_paket,
@@ -35,19 +37,19 @@
      * @return object
      */
     function InputTransactionInfotoDB($param) {
-        $op = "database/InputPackageDetailtoDB";
+        $op = "database/InputTransactionInfotoDB";
 
         try {
             $con = GetConnection();
-
-            $query = "INSERT INTO transaksi_paket(jarak, harga, status_paket ) VALUES(?,?,?)";
+            //UPDATE transaksi_paket SET status_paket = ?, ". $kolom_tanggal . " = now() WHERE id_transaksi = ?"
+            // $query = "UPDATE INTO transaksi_paket(jarak, harga ) VALUES(?,?) .  WHERE id_transaksi = ? ";
+            $query = "UPDATE transaksi_paket SET jarak = ?, harga=? WHERE id_transaksi=?";
 
             $result = $con->prepare($query);
             $result->execute([
-                
                 $param->jarak,
                 $param->harga,
-                $param->status_paket
+                $param->id_transaksi
                 
             ]);
         } catch (\Exception $e) {

@@ -19,6 +19,30 @@
 
     // get name variable and check if name is empty or not -> until it registered succesfully 
     
+    if (isset($_POST['id_pengirim'])) {
+        $req->id_pengirim = $_POST['id_pengirim'];
+    } else {
+        $msg = "[$op] id_pengirim can not be empty";
+        BuildErrorResponse($StatusBadRequest, $msg);
+        return;
+    }
+
+    if (isset($_POST['id_penerima'])) {
+        $req->id_penerima = $_POST['id_penerima'];
+    } else {
+        $msg = "[$op] id_penerima can not be empty";
+        BuildErrorResponse($StatusBadRequest, $msg);
+        return;
+    }
+
+    if (isset($_POST['id_user'])) {
+        $req->id_user = $_POST['id_user'];
+    } else {
+        $msg = "[$op] id_user can not be empty";
+        BuildErrorResponse($StatusBadRequest, $msg);
+        return;
+    }
+
     if (isset($_POST['nama_barang'])) {
         $req->nama_barang = $_POST['nama_barang'];
     } else {
@@ -26,8 +50,6 @@
         BuildErrorResponse($StatusBadRequest, $msg);
         return;
     }
-
-
 
     // get password
     if (isset($_POST['kuantitas'])) {
@@ -69,6 +91,7 @@
         BuildErrorResponse($StatusBadRequest, $msg);
         return;
     }
+    
     if (isset($_POST['tipe_pengambilan'])) {
         $req->tipe_pengambilan = $_POST['tipe_pengambilan'];
     } else {
@@ -81,7 +104,8 @@
    
 
     //ngambil function di service trs end point 
-    $res = InputPackageDetail($req);
+   
+
     if ($res instanceof Exception) {
         if (strcmp($res->getMessage(), $InvalidPackageDetail ) == 0) {
             BuildErrorResponse($StatusInvalidActivity, $res->getMessage());
@@ -91,7 +115,7 @@
         BuildErrorResponse($StatusInternalServerError, $res->getMessage());
         return;
     }
-    
+    $res = InputPackageDetail($req);
     $msg = "[$op] Package detail input succesfully";
     BuildSuccessResponse($msg);
 ?>
