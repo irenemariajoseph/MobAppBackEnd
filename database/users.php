@@ -110,25 +110,42 @@
         try {
             $con = GetConnection();
 
-            $query = "SELECT * FROM users WHERE password like ?";
-
-            $result = $con->prepare($query);
-            $result->execute([$password]);
-
-            $row = $result->fetch();
             
-            $changepassword= new ChangePassword();
-            $changepassword -> password = $row['password'];
-
-            //$query = "UPDATE users SET  password ='$password'";
            
 
-            return $changepassword;
-        
         } catch (Exception $e) {
             throw new Exception("[$op] $e");
         }
 
     }
+
+    /**
+     * @return object
+     */
+    function ChangeEmail($email) {
+        $op = "database/ChangePassword";
+        
+    
+        try {
+            $con = GetConnection();
+
+            
+           
+
+            $query = "UPDATE users SET email = ? WHERE email = ?";
+              
+            $result = $con->prepare($query);
+            $result->execute([
+                $email
+                
+            ]);
+
+
+        } catch (Exception $e) {
+            throw new Exception("[$op] $e");
+        }
+
+    }
+
     
 ?>

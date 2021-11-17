@@ -8,11 +8,12 @@
 
     }
 
-    class Role {
+    class ChangeEmail {
 
-        
-        public $role;
+        public $email;
 
     }
+
+
 
 ?>
