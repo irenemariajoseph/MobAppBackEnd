@@ -8,8 +8,7 @@
         public $provinsi;
         public $kota;
         public $kodepos;
-        public $latitude;
-        public $longtitude;
+     
         public $notes_tambahan;
 
     }

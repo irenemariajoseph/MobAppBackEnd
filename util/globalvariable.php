@@ -10,7 +10,7 @@
     date_default_timezone_set('Asia/Jakarta');
 
     // error message user login 
-    $LoginInvalid = "[service/LoginUser] Invalid username / password!";
+    $LoginInvalid = "[database/CheckExistingUserByEmail] Invalid username / password!";
 
     // error message alamat 
     $InvalidAddress = "[service/InputAlamat] Invalid Address Registration!";

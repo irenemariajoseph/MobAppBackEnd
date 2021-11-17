@@ -8,11 +8,12 @@
         public $kuantitas;
         public $unit_paket;
         public $berat;
+        public $jarak;
         public $fragile;
         public $asuransibarang;
         public $tipe_pengambilan;
         public $harga;
-        public $jarak; 
+        
     
 
     }

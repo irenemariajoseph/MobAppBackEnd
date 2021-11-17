@@ -55,7 +55,7 @@
         BuildErrorResponse($StatusInternalServerError, $res->getMessage());
         return;
     }
-
-    $msg = "[$op] User Sign In Succesfully";
-    BuildSuccessResponse($msg);
+    
+    // $msg = "[$op] User Sign In Succesfully";
+    BuildSuccessResponse($res);
 ?>

@@ -11,7 +11,7 @@
         try {
             $con = GetConnection();
 
-            $query = "INSERT INTO daftar_alamat_pengirim(nama, telpon, alamat_lengkap, provinsi, kota, kodepos, latitude, longtitude, notes_tambahan) VALUES(?,?,?,?,?,?,?,?,?)";
+            $query = "INSERT INTO daftar_alamat_pengirim(nama, telpon, alamat_lengkap, provinsi, kota, kodepos,notes_tambahan) VALUES(?,?,?,?,?,?,?)";
 
             $result = $con->prepare($query);
             $result->execute([
@@ -21,8 +21,6 @@
                 $param->provinsi,
                 $param->kota,
                 $param->kodepos,
-                $param->latitude,
-                $param->longtitude,
                 $param->notes_tambahan
                 
             ]);
@@ -37,7 +35,7 @@
         try {
             $con = GetConnection();
 
-            $query = "INSERT INTO daftar_alamat_penerima(nama, telpon, alamat_lengkap, provinsi, kota, kodepos, latitude, longtitude, notes_tambahan) VALUES(?,?,?,?,?,?,?,?,?)";
+            $query = "INSERT INTO daftar_alamat_penerima(nama, telpon, alamat_lengkap, provinsi, kota, kodepos,  notes_tambahan) VALUES(?,?,?,?,?,?,?)";
 
             $result = $con->prepare($query);
             $result->execute([
@@ -47,8 +45,6 @@
                 $param->provinsi,
                 $param->kota,
                 $param->kodepos,
-                $param->latitude,
-                $param->longtitude,
                 $param->notes_tambahan
                 
             ]);

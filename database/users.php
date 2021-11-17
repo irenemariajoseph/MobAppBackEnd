@@ -57,23 +57,43 @@
     /**
      * @return object
      */
-    function CheckUserInputLogin($email) {
+    function CheckUserInputLogin($param) {
         $op = "database/CheckExistingUserByEmail";
         
         try {
             $con = GetConnection();
 
+
+
             $query = "SELECT * FROM users WHERE email like ?";
 
             $result = $con->prepare($query);
-            $result->execute([$email]);
-
-            $row = $result->fetch();
+            $result->execute([$param -> email]);
             
-            $loginuser = new UsersLogin();
-            $loginuser -> email = $row['email'];
-            $loginuser -> password = $row['password'];
-            return $loginuser;
+            
+
+            if ($row = $result->fetch()) {
+                if (password_verify($param -> password, $row['password'])) {
+                    $loginuser = new UsersLogin();
+                    $loginuser -> email = $row['email'];
+                    $loginuser -> role = $row['role'];
+                    return $loginuser;
+                } else {
+                    return new Exception("[$op] Invalid username / password!");
+                }
+            } else {
+                return new Exception("[$op] Invalid username / password!");
+            }
+            
+            
+           
+            
+
+
+            // $userrole = new Role();
+            // $userrole -> role = $row['role'];
+            // return $userrole;
+            
         
         } catch (Exception $e) {
             throw new Exception("[$op] $e");

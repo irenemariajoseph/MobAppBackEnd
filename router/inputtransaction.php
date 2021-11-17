@@ -18,14 +18,7 @@
     $req = new InputTransactionInfotoDB();
 
 
-    if (isset($_POST['jarak'])) {
-        $req->jarak = $_POST['jarak'];
-    } else {
-        $msg = "[$op] jarak can not be empty";
-        BuildErrorResponse($StatusBadRequest, $msg);
-        return;
-    }
-
+  
     if (isset($_POST['harga'])) {
         $req->harga = $_POST['harga'];
     } else {

@@ -74,21 +74,7 @@
         return;
     }
 
-    if (isset($_POST['latitude'])) {
-        $req->latitude = $_POST['latitude'];
-    } else {
-        $msg = "[$op] latitude  can not be empty";
-        BuildErrorResponse($StatusBadRequest, $msg);
-        return;
-    }
 
-    if (isset($_POST['longtitude'])) {
-        $req->longtitude = $_POST['longtitude'];
-    } else {
-        $msg = "[$op] longtitude  can not be empty";
-        BuildErrorResponse($StatusBadRequest, $msg);
-        return;
-    }
     
     $res = InputAlamatPen($req);
     
