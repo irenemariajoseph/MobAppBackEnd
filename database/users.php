@@ -76,7 +76,10 @@
                 if (password_verify($param -> password, $row['password'])) {
                     $loginuser = new UsersLogin();
                     $loginuser -> email = $row['email'];
+                    $loginuser -> password = $row['password'];
                     $loginuser -> role = $row['role'];
+                    $loginuser -> name = $row['name'];
+                    $loginuser -> id = $row['id'];
                     return $loginuser;
                 } else {
                     return new Exception("[$op] Invalid username / password!");
@@ -122,7 +125,7 @@
     /**
      * @return object
      */
-    function ChangeEmail($email) {
+    function ChangeEmailinDB($email) {
         $op = "database/ChangePassword";
         
     

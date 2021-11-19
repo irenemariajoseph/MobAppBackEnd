@@ -91,6 +91,6 @@
 
     //ngambil function di service trs end point 
     
-    $msg = "[$op] Address Penerima registered succesfully";
-    BuildSuccessResponse($msg);
+    // $msg = "[$op] Address Penerima registered succesfully";
+    BuildSuccessResponse($res);
 ?>

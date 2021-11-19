@@ -8,17 +8,17 @@
 
     $op = "router/showpackage";
     //WAJIB ADA DISETIAP SERVICE YG ADA 
-    if ($_SERVER["REQUEST_METHOD"] != "GET") {
+    if ($_SERVER["REQUEST_METHOD"] != "POST") {
         $msg = "[$op] wrong request method"; // [$op] -> biar indikasi errornya gampang 
         BuildErrorResponse($StatusBadRequest, $msg);
         return;
     }
 
-    $id_transaksi = $_GET['id_transaksi'];
+    $id_user = $_POST['id'];
     
 
     //ngambil function di service trs end point 
-    $res = ShowPackage($id_transaksi);
+    $res = ShowPackageuser($id_user);
 
     if ($res instanceof Exception) {
         if (strcmp($res->getMessage(), $InvalidPackageDetail ) == 0) {

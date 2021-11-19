@@ -1,6 +1,7 @@
 <?php
 
     class InputPackageDetail {
+        public $id_transaksi;
         public $id_pengirim;
         public $id_penerima;
         public $id_user;

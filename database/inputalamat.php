@@ -24,6 +24,10 @@
                 $param->notes_tambahan
                 
             ]);
+            
+            $id_alamatpengirim = $con->lastInsertId();
+            return $id_alamatpengirim;
+
         } catch (\Exception $e) {
             throw new Exception("[$op] $e");
         }
@@ -48,6 +52,11 @@
                 $param->notes_tambahan
                 
             ]);
+
+             
+            $id_alamatpenerima = $con->lastInsertId();
+            return $id_alamatpenerima;
+
         } catch (\Exception $e) {
             throw new Exception("[$op] $e");
         }

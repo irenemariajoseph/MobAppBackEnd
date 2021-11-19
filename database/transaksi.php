@@ -11,7 +11,7 @@
         try {
             $con = GetConnection();
 
-            $query = "INSERT INTO transaksi_paket(id_pengirim,  id_penerima, id_user,  nama_barang, kuantitas, unit_paket, berat, jarak, fragile, asuransibarang, tipe_pengambilan , status_paket , jarak, harga   ) VALUES(?,?,?,?,?,?,?,?,?,?,?,'Belum Di Proses',  '2.0', '2.0' )";
+            $query = "INSERT INTO transaksi_paket(id_pengirim,  id_penerima, id_user,  nama_barang, kuantitas, unit_paket, berat, jarak, fragile, asuransibarang, tipe_pengambilan , harga ,status_paket  ) VALUES(?,?,?,?,?,?,?,?,?,?,?, ?, 'Belum Di Proses')";
 
             $result = $con->prepare($query);
             $result->execute([
@@ -25,10 +25,14 @@
                 $param->jarak,
                 $param->fragile,
                 $param->asuransibarang,
-                $param->tipe_pengambilan
+                $param->tipe_pengambilan,
+                $param->harga
+        
                 
             ]);
-            
+            $id_transaksi = $con->lastInsertId();
+            return $id_transaksi;
+
         } catch (\Exception $e) {
             throw new Exception("[$op] $e");
         }

@@ -107,11 +107,18 @@
         return;
     }
 
+    if (isset($_POST['harga'])) {
+        $req->harga = $_POST['harga'];
+    } else {
+        $msg = "[$op] harga  can not be empty";
+        BuildErrorResponse($StatusBadRequest, $msg);
+        return;
+    }
     
    
 
     //ngambil function di service trs end point 
-   
+    $res = InputPackageDetail($req);
 
     if ($res instanceof Exception) {
         if (strcmp($res->getMessage(), $InvalidPackageDetail ) == 0) {
@@ -122,7 +129,6 @@
         BuildErrorResponse($StatusInternalServerError, $res->getMessage());
         return;
     }
-    $res = InputPackageDetail($req);
-    $msg = "[$op] Package detail input succesfully";
-    BuildSuccessResponse($msg);
+   
+    BuildSuccessResponse($res);
 ?>

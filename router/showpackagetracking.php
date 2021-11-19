@@ -15,10 +15,13 @@
     }
 
     $id_transaksi = $_POST['id_transaksi'];
+
+
+  
     
 
     //ngambil function di service trs end point 
-    $res = ShowPackageDetails($id_transaksi);
+    $res = ShowPackageTracking($id_transaksi);
 
     if ($res instanceof Exception) {
         if (strcmp($res->getMessage(), $InvalidPackageDetail ) == 0) {

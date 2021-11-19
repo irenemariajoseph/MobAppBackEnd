@@ -6,19 +6,19 @@
     require "../service/showpackage.php";
     require "../util/globalvariable.php";
 
-    $op = "router/showpackagedetails";
+    $op = "router/showpackage";
     //WAJIB ADA DISETIAP SERVICE YG ADA 
-    if ($_SERVER["REQUEST_METHOD"] != "POST") {
+    if ($_SERVER["REQUEST_METHOD"] != "GET") {
         $msg = "[$op] wrong request method"; // [$op] -> biar indikasi errornya gampang 
         BuildErrorResponse($StatusBadRequest, $msg);
         return;
     }
 
-    $id_transaksi = $_POST['id_transaksi'];
+
     
 
     //ngambil function di service trs end point 
-    $res = ShowPackageDetails($id_transaksi);
+    $res = ShowPackagekurir();
 
     if ($res instanceof Exception) {
         if (strcmp($res->getMessage(), $InvalidPackageDetail ) == 0) {
