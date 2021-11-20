@@ -1,6 +1,6 @@
 <?php
     require "../util/responsebuilder.php";
-    require "../entity/login.php";
+    require "../entity/changepassword.php";
     require "../util/validate.php";
     require "../service/login.php";
     require "../util/globalvariable.php";
@@ -15,11 +15,26 @@
     }
 
      // initiate struct
-     $req = new ChangeEmail();
+     $req = new ChangePassword();
 
 
     // ngambil function di service trs end point 
    
+    if (isset($_POST['email'])) {
+        $req->email = $_POST['email'];
+    } else {
+        $msg = "[$op] email can not be empty";
+        BuildErrorResponse($StatusBadRequest, $msg);
+        return;
+    }
+
+    if (isset($_POST['password'])) {
+        $req->password = $_POST['password'];
+    } else {
+        $msg = "[$op] password can not be empty";
+        BuildErrorResponse($StatusBadRequest, $msg);
+        return;
+    }
 
 
   
@@ -28,9 +43,9 @@
 
 
    
-    ChangeEmail($req);
+    ChangePassword($req);
 
   
-    $msg = "[$op] Email has been updated";
+    $msg = "[$op] Password has been updated";
     BuildSuccessResponse($msg);
 ?>

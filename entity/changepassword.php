@@ -6,5 +6,12 @@
         public $password;
 
     }
+    
+    class ChangeEmail {
+
+        public $email;
+        public $emailbaru;
+
+    }
 
 ?>

@@ -8,7 +8,7 @@
 
     $op = "router/showpackage";
     //WAJIB ADA DISETIAP SERVICE YG ADA 
-    if ($_SERVER["REQUEST_METHOD"] != "GET") {
+    if ($_SERVER["REQUEST_METHOD"] != "POST") {
         $msg = "[$op] wrong request method"; // [$op] -> biar indikasi errornya gampang 
         BuildErrorResponse($StatusBadRequest, $msg);
         return;

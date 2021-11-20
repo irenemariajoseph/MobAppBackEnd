@@ -15,30 +15,30 @@
          
             switch($data){
                 
-                case 1:
+                case 'Pick Up':
                     UpdateStatusinDB($arr_status_text[0], $id_transaksi, 'tanggal_pickup');
                     break;
-                case 2:
+                case 'Delivered to Post':
                     UpdateStatusinDB($arr_status_text[1], $id_transaksi, 'tanggal_deliveredtopost');
                     break;
                   
-                case 3:
+                case 'Warehouse Transit':
                     UpdateStatusinDB($arr_status_text[2], $id_transaksi, 'tanggal_warehousetransit');
                     break;
                   
-                case 4:
+                case 'Accepted By Courier':
                     UpdateStatusinDB($arr_status_text[3], $id_transaksi, 'tanggal_acceptedbykurir');
                     break;
                   
-                case 5:
+                case 'On Going Delivery':
                     UpdateStatusinDB($arr_status_text[4], $id_transaksi, 'tanggal_ongoing');
                     break;
                   
-                case 6:
+                case 'Package Arrived':
                     UpdateStatusinDB($arr_status_text[5], $id_transaksi, 'tanggal_arrived');
                     break;
                   
-                case 7:
+                case 'Failed to Delivered':
                     UpdateStatusinDB($arr_status_text[6], $id_transaksi, 'tanggal_failed');
                     break;
                   

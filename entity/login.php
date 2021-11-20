@@ -10,12 +10,7 @@
 
     }
 
-    class ChangeEmail {
-
-        public $email;
-
-    }
-
+    
 
 
 ?>

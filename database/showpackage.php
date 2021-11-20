@@ -176,9 +176,10 @@
                 //7
                 $res->tanggal_pickup = $hasil['tanggal_pickup'];
                 $res->tanggal_deliveredtopost = $hasil['tanggal_deliveredtopost'];
+                $res->tanggal_warehousetransit = $hasil['tanggal_warehousetransit'];
                 $res->tanggal_acceptedbykurir = $hasil['tanggal_acceptedbykurir'];
                 $res->tanggal_ongoing = $hasil['tanggal_ongoing'];
-                $res->asuransibarang = $hasil['asuransibarang'];
+                
                 $res->tanggal_arrived = $hasil['tanggal_arrived'];
                 $res->tanggal_failed = $hasil['tanggal_failed'];
 

@@ -107,13 +107,22 @@
     /**
      * @return object
      */
-    function ChangePassword($password) {
+    function ChangePasswordinDB($param) {
         $op = "database/ChangePassword";
         
         try {
             $con = GetConnection();
 
-            
+            $query = "UPDATE users SET password = ? WHERE email = ?";
+              
+     
+
+            $result = $con->prepare($query);
+            $result->execute([
+                $param->password,
+                $param->email
+               
+            ]);
            
 
         } catch (Exception $e) {
@@ -122,33 +131,30 @@
 
     }
 
-    /**
+         /**
      * @return object
      */
-    function ChangeEmailinDB($email) {
-        $op = "database/ChangePassword";
-        
-    
+    function ChangeEmailinDB($param) {
+        $op = "database/UpdateStatusinDB";
+
         try {
             $con = GetConnection();
 
             
-           
-
-            $query = "UPDATE users SET email = ? WHERE email = ?";
+            $query = "UPDATE users SET email =  ?  WHERE email = ?";
               
             $result = $con->prepare($query);
             $result->execute([
-                $email
-                
+                $param -> emailbaru,
+                $param -> email
+               
             ]);
 
-
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             throw new Exception("[$op] $e");
         }
-
     }
-
-    
 ?>
+
+
+
