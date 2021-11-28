@@ -11,7 +11,7 @@
         try {
             $con = GetConnection();
 
-            $query = "SELECT * FROM users WHERE email like ?";
+            $query = "SELECT * FROM  people WHERE email like ?";
 
             $result = $con->prepare($query);
             $result->execute([$email]);
@@ -39,7 +39,7 @@
         try {
             $con = GetConnection();
 
-            $query = "INSERT INTO users(name, password, email, role, join_date) VALUES(?,?,?, 'user'  , now())";
+            $query = "INSERT INTO people(name, password, email, role, join_date) VALUES(?,?,?, 'user'  , now())";
 
             $result = $con->prepare($query);
             $result->execute([
@@ -65,7 +65,7 @@
 
 
 
-            $query = "SELECT * FROM users WHERE email like ?";
+            $query = "SELECT * FROM people WHERE email like ?";
 
             $result = $con->prepare($query);
             $result->execute([$param -> email]);
@@ -113,7 +113,7 @@
         try {
             $con = GetConnection();
 
-            $query = "UPDATE users SET password = ? WHERE email = ?";
+            $query = "UPDATE people SET password = ? WHERE email = ?";
               
      
 
@@ -141,7 +141,7 @@
             $con = GetConnection();
 
             
-            $query = "UPDATE users SET email =  ?  WHERE email = ?";
+            $query = "UPDATE people SET email =  ?  WHERE email = ?";
               
             $result = $con->prepare($query);
             $result->execute([

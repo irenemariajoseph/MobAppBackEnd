@@ -12,8 +12,8 @@
 
             $query = "SELECT transaksi_paket.id_transaksi, daftar_alamat_pengirim.alamat_lengkap as alamat_pengirim , daftar_alamat_penerima.alamat_lengkap as alamat_penerima FROM transaksi_paket INNER JOIN daftar_alamat_penerima  ON transaksi_paket.id_penerima = daftar_alamat_penerima.id_alamatpenerima 
             INNER JOIN daftar_alamat_pengirim ON transaksi_paket.id_pengirim = daftar_alamat_pengirim.id_alamatpengirim
-                        INNER JOIN users
-                        ON transaksi_paket.id_user = users.id
+                        INNER JOIN people
+                        ON transaksi_paket.id_user = people.id
                         WHERE id_user = ?";
               
             $result = $con->prepare($query);
@@ -53,8 +53,8 @@
 
             $query = "SELECT transaksi_paket.id_transaksi, daftar_alamat_pengirim.alamat_lengkap as alamat_pengirim , daftar_alamat_penerima.alamat_lengkap as alamat_penerima FROM transaksi_paket INNER JOIN daftar_alamat_penerima  ON transaksi_paket.id_penerima = daftar_alamat_penerima.id_alamatpenerima 
             INNER JOIN daftar_alamat_pengirim ON transaksi_paket.id_pengirim = daftar_alamat_pengirim.id_alamatpengirim
-                        INNER JOIN users
-                        ON transaksi_paket.id_user = users.id";
+                        INNER JOIN people
+                        ON transaksi_paket.id_user = people.id";
               
             $result = $con->prepare($query);
             $result->execute();
